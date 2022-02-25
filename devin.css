@@ -1,0 +1,50 @@
+body{
+    background-color: rgb(31, 31, 31);
+    color: white;
+    font-family: system-ui;
+    margin: 0 auto;
+    padding: 30px;
+
+}
+
+h2, h3 {
+    text-align: center;
+}
+
+#ctn {
+    margin-top: 150px;
+    text-align: center;
+}
+
+.mess{
+    border: solid black 2px;
+    background-color:  rgb(242, 210, 33);
+    width: 380px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    margin: 50px auto;
+
+}
+
+#message{
+}
+
+
+#images {
+    display: flex;
+    justify-content: center;
+    margin: 60px auto;
+    height: 200px;
+    width: 250px;
+}
+
+button {
+
+    background-color: rgb(237, 207, 37);
+    border: none;
+    height: 20px;
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Jeu du devin</title>
+		<link rel="stylesheet" href="devin.css" />
+	</head>
+	<body>
+		<h2>✹ Jeu du Devin ✹</h2>
+		<h3> Deviner un nombre entier compris entre 1 et 100 ! (10 tentatives max)</h3>
+		<div id="ctn">
+			<input type="text" id="input" value=""/>
+			<button id="valider">Essayer</button>
+			<div id="message"></div>
+		</div>
+		<script>
+
+			//generate random number
+			var nbMystere = Math.floor(Math.random() * (100 - 1) + 1);
+			console.log("The number : " + nbMystere)
+			
+			//number of lives
+			var nbCoups = 3
+
+			//game information
+			var message = document.getElementById("message");
+
+			//the button 
+			var btn = document.getElementById("valider");
+
+			//number of games
+			var nbDeParties = 1
+
+			//first click = display the message
+			var display = 0
+
+			var loseImage = document.createElement("img");
+			loseImage.setAttribute("id","images");
+			loseImage.src = "https://i.makeagif.com/media/4-09-2019/k-Yfb7.gif"
+
+			var winImage = document.createElement("img");
+			winImage.setAttribute("id","images");
+			winImage.src = "https://c.tenor.com/RxGETpJZvusAAAAC/luigi-you-win.gif"
+
+			Element.prototype.remove = function() {
+    			this.parentElement.removeChild(this);
+			}
+
+			NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+				for(var i = this.length - 1; i >= 0; i--) {
+					if(this[i] && this[i].parentElement) {
+						this[i].parentElement.removeChild(this[i]);
+					}
+				}
+			}
+
+
+			function whenYouWins(){
+				if(display == 1){
+					document.querySelector("body").appendChild(winImage);
+				}
+				console.log("wins : " + display)
+			}
+
+			function whenYouLose(){
+				
+				if(display == 1){
+					document.querySelector("body").appendChild(loseImage);
+				}
+				console.log("lose : " + display)
+			}
+
+
+			function reset(){
+
+				nbDeParties += 1;
+				display = 0;
+				document.getElementById("input").value = "";
+
+				var theImage = document.getElementById("images");
+				theImage.remove();
+
+				//remove the element 
+				document.getElementById("message").removeAttribute("class", "mess");
+
+				nbCoups = 3;
+				btn.textContent = "Essayer";
+				message.innerHTML = "<p></p>";
+
+				nbMystere = Math.floor(Math.random() * (100 - 1) + 1);
+
+				console.log("reset")
+				console.log("The number : " + nbMystere)
+				console.log("N° de partie : " + nbDeParties)
+
+				btn.removeEventListener("click", reset)
+			}
+
+			//called each time the user click on the button
+			function game () {
+
+				var reponse = document.getElementById("input").value;
+
+				if(display == 0){
+					display += 1
+					document.getElementById("message").setAttribute("class", "mess");
+				}
+
+				
+				if(nbCoups > 0){
+
+					if(parseInt(reponse, 10) < 0  || parseInt(reponse, 10) > 100 ){
+						//out of bounds of [1,100]
+						nbCoups-=1;
+						message.innerHTML = "<p>[" + nbCoups + "] Le nombre doit être strictement supérieur à 1 ou strictement inférieur à 100!</p>"
+						message.style.color="black";
+					}
+					else if(parseInt(reponse,10) < nbMystere){         
+						//too low
+						nbCoups-=1;
+						message.innerHTML = "<p>[" + nbCoups + "] C'est plus !</p>"
+						message.style.color="rgb(33, 30, 12)";
+
+					}else if (parseInt(reponse,10) > nbMystere){   
+						//too big
+						nbCoups-=1;
+						message.innerHTML = "<p>[" + nbCoups + "] C'est moins !</p>"
+						message.style.color="rgb(33, 30, 12)";
+
+					}else if(isNaN(reponse)){ 
+						//not a number
+						message.innerHTML = "<p>[" + nbCoups + "] Ceci n'est pas un nombre !</p>"
+						message.style.color="white";
+					}
+					else if(!reponse){
+						//is empty
+						message.innerHTML = "<p>[" + nbCoups + "] Vous n'avez rien écrit !</p>"
+						message.style.color="black";
+					}else{    
+						//the user wins
+						message.innerHTML = "<p> [" + nbCoups + "] C'est gagné ! Le nombre mystère était bien " + nbMystere + " !</p>"						
+						message.style.color="green";
+						whenYouWins()
+						btn.textContent = "Rejouer?";
+						btn.addEventListener("click", reset)
+					}
+
+				}else{    
+					//lost !
+					message.innerHTML = "<p>[" + nbCoups + "] Perdu ! La réponse était " + nbMystere + " !</p>"
+					message.style.color="red";
+					btn.textContent = "Rejouer ?";
+					whenYouLose();
+					btn.addEventListener("click", reset)
+				}
+			}
+
+			btn.addEventListener("click", game);
+	
+
+	</script>
+	</body>
+</html>
