@@ -1,0 +1,30 @@
+input {
+}
+
+#btn_save {
+
+    background-color: black;
+    color: white;
+}
+
+#element-list {
+
+    border:solid black 0.5px;
+    font-size: 15px;
+    padding:0 10px;
+    width: 165px;
+    margin: 10px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+#btn_list {
+    color: red;
+}
+
+#btn_list > button {
+    margin: 0 5px;
+}

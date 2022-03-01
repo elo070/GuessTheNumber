@@ -7,7 +7,8 @@
 	</head>
 	<body>
 		<h2>✹ Jeu du Devin ✹</h2>
-		<h3> Deviner un nombre entier compris entre 1 et 100 ! (10 tentatives max)</h3>
+		<h3> Deviner un nombre entier compris entre 1 et 100 !</h3>
+		<h3> (10 tentatives max)</h3>
 		<div id="ctn">
 			<input type="text" id="input" value=""/>
 			<button id="valider">Essayer</button>
@@ -20,7 +21,7 @@
 			console.log("The number : " + nbMystere)
 			
 			//number of lives
-			var nbCoups = 3
+			var nbCoups = 10;
 
 			//game message
 			var message = document.getElementById("message");
@@ -29,11 +30,13 @@
 			var btn = document.getElementById("valider");
 
 			//number of games
-			var nbDeParties = 1
+			var nbDeParties = 1;
 
 			//first click = display the message
-			var display = 0
+			var display = 0;
 
+
+			//images for when game is over
 			var loseImage = document.createElement("img");
 			loseImage.setAttribute("id","images");
 			loseImage.src = "https://i.makeagif.com/media/4-09-2019/k-Yfb7.gif"
@@ -42,6 +45,8 @@
 			winImage.setAttribute("id","images");
 			winImage.src = "https://c.tenor.com/RxGETpJZvusAAAAC/luigi-you-win.gif"
 
+
+			//functions to remove element on page
 			Element.prototype.remove = function() {
     			this.parentElement.removeChild(this);
 			}
@@ -83,7 +88,7 @@
 				//remove the element 
 				document.getElementById("message").removeAttribute("class", "mess");
 
-				nbCoups = 3;
+				nbCoups = 10;
 				btn.textContent = "Essayer";
 				message.innerHTML = "<p></p>";
 

@@ -4,7 +4,6 @@ body{
     font-family: system-ui;
     margin: 0 auto;
     padding: 30px;
-
 }
 
 h2, h3 {
@@ -12,14 +11,26 @@ h2, h3 {
 }
 
 #ctn {
-    margin-top: 150px;
+    margin-top: 95px;
     text-align: center;
+}
+
+#input{
+    font-weight: bold;
+    font-family: 'Hubballi', cursive;
+    margin : 0 50px;
+}
+
+button {
+    background-color: rgb(237, 207, 37);
+    border: none;
+    height: 20px;
 }
 
 .mess{
     border: solid black 2px;
     background-color:  rgb(242, 210, 33);
-    width: 380px;
+    width: 400px;
     height: 100px;
     display: flex;
     justify-content: center;
@@ -27,12 +38,7 @@ h2, h3 {
     text-align: center;
     font-weight: bold;
     margin: 50px auto;
-
 }
-
-#message{
-}
-
 
 #images {
     display: flex;
@@ -42,9 +48,3 @@ h2, h3 {
     width: 250px;
 }
 
-button {
-
-    background-color: rgb(237, 207, 37);
-    border: none;
-    height: 20px;
-}

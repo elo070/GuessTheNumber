@@ -1,0 +1,12 @@
+dropdown que l'utilisateur peut alimenter
+
+par défaut :
+
+il y'a seulement un input, 
+une fois la valeur écrite, on peut save
+puis cocher/décocher parmi celles qu'on a crée 
+on peut modifier la valeur 
+
+ ---------------------------
+| valeur      |x| Mod Sup   |
+ ---------------------------
